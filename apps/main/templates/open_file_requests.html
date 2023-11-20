@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>List of file requests</title>
+    </head>
+
+    <body>
+        <h2>Open file requests</h2>
+        {% for item in files %}
+            <p>{{ item.title }}</p>
+            <a href="{% url 'edit-file-request' id=item.id %}">
+                <button>EDIT</button>
+            </a>
+            <a href="{% url 'send-file-email' id=item.id %}">
+                <button>SEND EMAIL</button>
+            </a>
+        {% endfor %}
+    </body>
+</html>

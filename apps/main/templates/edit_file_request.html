@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>File request</title>
+    </head>
+    <body>
+        <h2>Edit file request</h2>
+        <form {% csrf_token %}>
+            <h3>Title</h3>
+            <input type="text" value="{{ title }}"></input>
+            <h3>Description</h3>
+            <input type="text" value="{{ description }}"></input>
+            <h3>Destination</h3>
+            {% if location %}
+                <select>
+                    {% for location in location %}
+                        <option value="{{ location }}">{{ location }}</option>
+                    {% endfor %}
+                </select>
+                {% else %}
+                    <i>No file directory available</i>
+            {% endif %}
+        </form>
+
+    </body>
+</html>

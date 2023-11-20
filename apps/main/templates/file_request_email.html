@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Send file request email</title>
+    </head>
+
+    <body>
+        <h2>Send file request email</h2>
+
+        <form method="post" action="{% url 'send-file-email' id=id %}">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% comment %} <form method="post" action="{% url 'send-file-email' id=id %}">
+            {% csrf_token %}
+            {{ form.subject.label_tag }}
+            <input type="text" value="{{ title | default:'' }}"></input>
+            {% if form.errors %}
+                {% for key, value in form.errors.items %}
+                    <strong>{{ key }}: {{ value }}</strong>
+                {% endfor %}
+            {% endif %}
+            <br>
+            <br>
+            {{ form.email.label_tag }}
+            <input type="email">
+            <br>
+            <br>
+            {{ form.body.label_tag }}
+            <textarea
+                rows="10"
+                cols="50">{{ body | default:'' }}</textarea>
+            <br>
+            <br>
+            <button type="submit">Submit</button>
+        </form> {% endcomment %}
+    </body>
+</html>
